@@ -1,0 +1,62 @@
+global using Solutions.Attributes;
+global using Solutions.Common;
+
+using JetBrains.Annotations;
+using System.Diagnostics;
+
+namespace Solutions.Common;
+
+
+[UsedImplicitly(ImplicitUseTargetFlags.WithInheritors | ImplicitUseTargetFlags.Default)]
+public abstract class SolutionBase
+{
+    protected const string NotSolvedString = "Not solved";
+    
+    public string? InputDirectory { get; set; }
+    public virtual int Parts => 3;
+    
+    protected virtual string P1InputName => "p1.txt";
+    protected virtual string P2InputName => "p2.txt";
+    protected virtual string P3InputName => "p3.txt";
+    
+    public virtual void Initialize()
+    {
+    }
+    
+    public abstract object Solve(int part);
+    
+    protected string GetInputText(int part, bool trimEnd = true)
+    {
+        Debug.Assert(InputDirectory != null);
+        Debug.Assert(Path.Exists(InputDirectory));
+        
+        var fileName = GetInputFileName(part);
+        var filePath = Path.Combine(InputDirectory, fileName);
+        var text = File.ReadAllText(filePath);
+
+        return trimEnd
+            ? text.TrimEnd()
+            : text;
+    }
+
+    protected string[] GetInputLines(int part)
+    {
+        Debug.Assert(InputDirectory != null);
+        Debug.Assert(Path.Exists(InputDirectory));
+        
+        var fileName = GetInputFileName(part);
+        var filePath = Path.Combine(InputDirectory, fileName);
+        return File.ReadAllLines(filePath);
+    }
+    
+    private string GetInputFileName(int part)
+    {
+        return part switch
+        {
+            1 => P1InputName,
+            2 => P2InputName,
+            3 => P3InputName,
+            _ => string.Empty
+        };
+    }
+}
