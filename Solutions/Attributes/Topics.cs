@@ -4,5 +4,5 @@ namespace Solutions.Attributes;
 public enum Topics
 {
     None = 0,
-    Math = 1 << 0,
+    StringParsing = 1 << 0,
 }
