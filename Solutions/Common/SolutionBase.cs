@@ -39,6 +39,11 @@ public abstract class SolutionBase
             : text;
     }
 
+    protected T ParseInputText<T>(int part, Func<string, T> parser, bool trimEnd = true)
+    {
+        return parser(GetInputText(part, trimEnd));
+    }
+    
     protected string[] GetInputLines(int part)
     {
         Debug.Assert(InputDirectory != null);
@@ -47,6 +52,11 @@ public abstract class SolutionBase
         var fileName = GetInputFileName(part);
         var filePath = Path.Combine(InputDirectory, fileName);
         return File.ReadAllLines(filePath);
+    }
+
+    protected T[] ParseInputLines<T>(int part, Func<string, T> parser)
+    {
+        return GetInputLines(part).Select(parser).ToArray();
     }
     
     private string GetInputFileName(int part)
