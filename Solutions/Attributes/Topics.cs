@@ -7,5 +7,6 @@ public enum Topics
     StringParsing = 1 << 0,
     Vectors       = 1 << 1,
     Math          = 1 << 2,
-    Simulation    = 1 << 3
+    Simulation    = 1 << 3,
+    Graphs        = 1 << 4
 }
