@@ -59,6 +59,8 @@ public readonly record struct Vec2D(int X, int Y)
 
         return Math.Atan2(sin, cos) * (180 / Math.PI);
     }
+
+    public static implicit operator Vec2D(Vec3D v) => new(v.X, v.Y);
     
     public static Vec2D operator +(Vec2D lhs, Vec2D rhs)
     {
