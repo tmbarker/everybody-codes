@@ -7,13 +7,9 @@ public class Solution : SolutionBase
 {
     public override object Solve(int part)
     {
-        return part switch
-        {
-            1 => SumArea(part, Metric.Taxicab),
-            2 => SumArea(part, Metric.Taxicab),
-            3 => SumArea(part, Metric.Chebyshev),
-            _ => NotSolvedString
-        };
+        return SumArea(part, metric: part != 3
+            ? Metric.Taxicab
+            : Metric.Chebyshev);
     }
 
     private int SumArea(int part, Metric metric)

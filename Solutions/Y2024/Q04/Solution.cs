@@ -8,13 +8,9 @@ public class Solution : SolutionBase
     public override object Solve(int part)
     {
         var heights = ParseInputLines(part, parser: line => line.ParseInt());
-        return part switch
-        {
-            1 => LevelNaive(heights),
-            2 => LevelNaive(heights),
-            3 => LevelMedian(heights),
-            _ => NotSolvedString
-        };
+        return part != 3
+            ? LevelNaive(heights)
+            : LevelMedian(heights);
     }
 
     private static int LevelNaive(int[] heights)
