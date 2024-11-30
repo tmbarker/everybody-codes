@@ -19,10 +19,6 @@ public abstract class SolutionBase
     protected virtual string P2InputName => "p2.txt";
     protected virtual string P3InputName => "p3.txt";
     
-    public virtual void Initialize()
-    {
-    }
-    
     public abstract object Solve(int part);
     
     protected string GetInputText(int part, bool trimEnd = true)

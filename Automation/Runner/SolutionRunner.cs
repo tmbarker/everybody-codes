@@ -27,8 +27,7 @@ public class SolutionRunner(ILogger logger) : IRunner
         try
         {
             solution.InputDirectory = Path.Combine(inputCachePath, $"Y{year}", $"Q{quest:D2}");
-            solution.Initialize();
-
+            
             var stopwatch = new Stopwatch();
             
             for (var i = 0; i < solution.Parts; i++)
