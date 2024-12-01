@@ -9,7 +9,7 @@ namespace Solutions.Y2024.Q10;
 using Shrine = Grid2D<char>;
 using CharMap = DefaultDict<char, HashSet<Vec2D>>;
 
-[QuestInfo("Shrine Needs to Shine", Topics.StringParsing, Difficulty.Difficult, favourite: true)]
+[QuestInfo("Shrine Needs to Shine", Topics.StringParsing, Difficulty.Hard, favourite: true)]
 public class Solution : SolutionBase
 {
     private const char Unknown = '.';

@@ -16,8 +16,6 @@ public readonly record struct Vec3D(int X, int Y, int Z)
     public static readonly Vec3D Forward = new(X:  0, Y:  0, Z:  1);
     public static readonly Vec3D Back    = new(X:  0, Y:  0, Z: -1);
 
-    public int this[Axis component] => GetComponent(component);
-
     public Vec3D(Vec2D xy, int z) : this(xy.X, xy.Y, z)
     {
     }

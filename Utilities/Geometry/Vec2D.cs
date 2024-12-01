@@ -14,9 +14,7 @@ public readonly record struct Vec2D(int X, int Y)
     public static readonly Vec2D Left  = new(X: -1, Y:  0);
     public static readonly Vec2D Right = new(X:  1, Y:  0);
     public static readonly Vec2D PositiveInfinity = new (X: int.MaxValue, Y:int.MaxValue);
-
-    public int this[Axis component] => GetComponent(component);
-
+    
     public static int Distance(Vec2D a, Vec2D b, Metric metric)
     {
         return metric switch
@@ -35,29 +33,6 @@ public readonly record struct Vec2D(int X, int Y)
     public static bool IsAdjacent(Vec2D a, Vec2D b, Metric metric)
     {
         return Distance(a, b, metric) <= 1;
-    }
-    
-    public static Vec2D MinCollinear(Vec2D vec)
-    {
-        var maxDivisor = ChebyshevDistance(a: Zero, b: vec);
-        for (var k = maxDivisor; k > 1; k--)
-        {
-            var candidate = vec / k;
-            if (k * candidate == vec)
-            {
-                return candidate;
-            }
-        }
-
-        return vec;
-    }
-
-    public static double AngleBetweenDeg(Vec2D from, Vec2D to)
-    {
-        var sin = to.X * from.Y - from.X * to.Y;
-        var cos = to.X * from.X + from.Y * to.Y;
-
-        return Math.Atan2(sin, cos) * (180 / Math.PI);
     }
 
     public static implicit operator Vec2D(Vec3D v) => new(v.X, v.Y);
