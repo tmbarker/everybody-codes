@@ -6,7 +6,6 @@ using System.Diagnostics;
 
 namespace Solutions.Common;
 
-
 [UsedImplicitly(ImplicitUseTargetFlags.WithInheritors | ImplicitUseTargetFlags.Default)]
 public abstract class SolutionBase
 {
