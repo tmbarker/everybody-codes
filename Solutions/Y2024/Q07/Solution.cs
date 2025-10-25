@@ -1,7 +1,7 @@
 namespace Solutions.Y2024.Q07;
 
 [QuestInfo("Not Fast but Furious", Topics.Simulation, Difficulty.Medium, favourite:true)]
-public class Solution : SolutionBase
+public sealed class Solution : SolutionBase
 {
     public override object Solve(int part)
     {

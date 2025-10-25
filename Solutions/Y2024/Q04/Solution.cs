@@ -3,7 +3,7 @@ using Utilities.Extensions;
 namespace Solutions.Y2024.Q04;
 
 [QuestInfo("Royal Smith's Puzzle", Topics.Math, Difficulty.Easy)]
-public class Solution : SolutionBase
+public sealed class Solution : SolutionBase
 {
     public override object Solve(int part)
     {

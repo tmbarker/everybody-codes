@@ -1,7 +1,7 @@
 namespace Solutions.Y2024.Q09;
 
 [QuestInfo("Sparkling Bugs", Topics.Math | Topics.Recursion, Difficulty.Easy, favourite: true)]
-public class Solution : SolutionBase
+public sealed class Solution : SolutionBase
 {
     public override object Solve(int part)
     {

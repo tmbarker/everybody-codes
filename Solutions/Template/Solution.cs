@@ -1,7 +1,7 @@
 namespace Solutions.Template;
 
 [QuestInfo("", Topics.None, Difficulty.Easy)]
-public class Solution : SolutionBase
+public sealed class Solution : SolutionBase
 {
     public override object Solve(int part)
     {

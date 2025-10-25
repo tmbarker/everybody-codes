@@ -1,7 +1,7 @@
 namespace Solutions.Y2024.Q14;
 
 [QuestInfo("The House of Palms", Topics.Vectors, Difficulty.Medium)]
-public class Solution : SolutionBase
+public sealed class Solution : SolutionBase
 {
     public override object Solve(int part)
     {

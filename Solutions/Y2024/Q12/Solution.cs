@@ -3,7 +3,7 @@ using Utilities.Geometry;
 namespace Solutions.Y2024.Q12;
 
 [QuestInfo("Desert Shower", Topics.Vectors|Topics.Math, Difficulty.Hard)]
-public class Solution : SolutionBase
+public sealed class Solution : SolutionBase
 {
     private static readonly char[] Catapults = ['A', 'B', 'C'];
     

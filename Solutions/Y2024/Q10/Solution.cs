@@ -10,7 +10,7 @@ using Shrine = Grid2D<char>;
 using CharMap = DefaultDict<char, HashSet<Vec2D>>;
 
 [QuestInfo("Shrine Needs to Shine", Topics.StringParsing, Difficulty.Hard, favourite: true)]
-public class Solution : SolutionBase
+public sealed class Solution : SolutionBase
 {
     private const char Unknown = '.';
     private const char Mystery = '?';

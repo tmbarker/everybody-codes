@@ -3,7 +3,7 @@ using Utilities.Collections;
 namespace Solutions.Y2024.Q11;
 
 [QuestInfo("Biological Warfare", Topics.Simulation, Difficulty.Easy)]
-public class Solution : SolutionBase
+public sealed class Solution : SolutionBase
 {
     public override object Solve(int part)
     {

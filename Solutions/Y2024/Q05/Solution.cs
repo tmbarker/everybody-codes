@@ -6,7 +6,7 @@ namespace Solutions.Y2024.Q05;
 using State = List<List<int>>;
 
 [QuestInfo("Pseudo-Random Clap Dance", Topics.Math|Topics.Simulation, Difficulty.Medium)]
-public class Solution : SolutionBase
+public sealed class Solution : SolutionBase
 {
     public override object Solve(int part)
     {

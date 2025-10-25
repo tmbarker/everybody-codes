@@ -3,7 +3,7 @@ using Utilities.Geometry;
 namespace Solutions.Y2024.Q03;
 
 [QuestInfo("Mining Maestro", Topics.Vectors, Difficulty.Easy)]
-public class Solution : SolutionBase
+public sealed class Solution : SolutionBase
 {
     public override object Solve(int part)
     {

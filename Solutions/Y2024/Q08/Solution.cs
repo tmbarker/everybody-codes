@@ -3,7 +3,7 @@ using Utilities.Collections;
 namespace Solutions.Y2024.Q08;
 
 [QuestInfo("A Shrine for Nullpointer", Topics.Math, Difficulty.Medium)]
-public class Solution : SolutionBase
+public sealed class Solution : SolutionBase
 {
     private long Input(int part) => ParseInputText(part, long.Parse);
     

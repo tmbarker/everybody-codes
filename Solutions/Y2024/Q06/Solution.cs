@@ -6,7 +6,7 @@ using Graph = DefaultDict<string, HashSet<string>>;
 using State = (string Node, string Path);
 
 [QuestInfo("The Tree of Titans", Topics.Graphs, Difficulty.Easy, favourite: true)]
-public class Solution : SolutionBase
+public sealed class Solution : SolutionBase
 {
     private const string Root = "RR";
     private const string Fruit = "@";
