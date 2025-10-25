@@ -1,7 +1,7 @@
 namespace Utilities.Geometry;
 
 /// <summary>
-///     Represents the convention of a <see cref="Euclidean" /> coordinate system origin
+///     Represents the convention of a Euclidean coordinate system origin.
 /// </summary>
 public enum Origin
 {

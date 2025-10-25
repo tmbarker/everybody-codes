@@ -54,7 +54,7 @@ public sealed class Solution : SolutionBase
         foreach (var line in input)
         {
             var components = line.Split(':');
-            spawns[components[0]] = components[^1].Split(',').ToArray();
+            spawns[components[0]] = components[^1].Split(',');
         }
         return spawns;
     }

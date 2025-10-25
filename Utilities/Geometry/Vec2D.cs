@@ -119,8 +119,8 @@ public readonly record struct Vec2D(int X, int Y)
 
         return dx + dy;
     }
-    
-    private int GetComponent(Axis component)
+
+    public int GetComponent(Axis component)
     {
         switch (component)
         {

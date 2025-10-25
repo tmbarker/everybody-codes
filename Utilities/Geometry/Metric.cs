@@ -1,7 +1,7 @@
 namespace Utilities.Geometry;
 
 /// <summary>
-///     Represents a metric in <see cref="Euclidean" /> space
+///     Represents a metric in Euclidean space.
 /// </summary>
 public enum Metric
 {

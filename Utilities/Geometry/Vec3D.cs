@@ -116,7 +116,7 @@ public readonly record struct Vec3D(int X, int Y, int Z)
         return dx + dy + dz;
     }
     
-    private int GetComponent(Axis component)
+    public int GetComponent(Axis component)
     {
         switch (component)
         {

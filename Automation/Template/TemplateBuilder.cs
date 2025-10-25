@@ -62,8 +62,13 @@ public class TemplateBuilder(ILogger logger) : ITemplateBuilder
         
         var destDirPath = Path.Combine(solutionsDirPath, $"Y{year}", $"Q{quest:D2}");
         var destFilePath = Path.Combine(destDirPath, Path.GetFileName(templateFilePath));
-
-        Directory.CreateDirectory(destDirPath);
+        
+        if (File.Exists(destFilePath))
+        {
+            logger.Log($"Will not create solution file, target already exists [{destFilePath}]",
+                ConsoleColor.Gray);
+            return;
+        }
         
         var templateLines = File.ReadAllLines(templateFilePath);
         for (var i = 0; i < templateLines.Length; i++)
@@ -75,6 +80,7 @@ public class TemplateBuilder(ILogger logger) : ITemplateBuilder
             }
         }
 
+        Directory.CreateDirectory(destDirPath);
         File.WriteAllLines(destFilePath, templateLines);
         logger.Log($"Solution stub created [{destFilePath}]", ConsoleColor.Gray);
     }
