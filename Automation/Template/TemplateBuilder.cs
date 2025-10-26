@@ -37,8 +37,7 @@ public class TemplateBuilder(ILogger logger) : ITemplateBuilder
             }
             
             File.CreateText(inputFilePath);
-            
-            logger.Log($"Input stub created [{inputFilePath}]", ConsoleColor.Gray);
+            logger.Log($"Input stub created [{inputFilePath}]", ConsoleColor.Green);
         }
     }
     
@@ -82,7 +81,7 @@ public class TemplateBuilder(ILogger logger) : ITemplateBuilder
 
         Directory.CreateDirectory(destDirPath);
         File.WriteAllLines(destFilePath, templateLines);
-        logger.Log($"Solution stub created [{destFilePath}]", ConsoleColor.Gray);
+        logger.Log($"Solution stub created [{destFilePath}]", ConsoleColor.Green);
     }
     
     private static string GetFullPath(string path)

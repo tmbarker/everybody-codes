@@ -97,6 +97,16 @@ public sealed partial class Grid2D<T> : IEnumerable<Vec2D>
             position.X == 0 || position.Y == 0 ||
             position.X == Width - 1 || position.Y == Height - 1;
     }
+
+    /// <summary>
+    ///     Find the position of the specified <see cref="element"/> in the <see cref="Grid2D{T}"/>
+    /// </summary>
+    /// <param name="element">The element to find</param>
+    /// <returns>The position of the target <see cref="element"/></returns>
+    public Vec2D Find(T element)
+    {
+        return this.Single(pos => element != null && element.Equals(this[pos]));
+    }
     
     /// <summary>
     ///     Print the <see cref="Grid2D{T}" /> instance contents to the console
