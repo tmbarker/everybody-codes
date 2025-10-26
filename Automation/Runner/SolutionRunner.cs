@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Automation.Logger;
+using Solutions.Attributes;
 using Solutions.Common;
 
 namespace Automation.Runner;
@@ -16,6 +17,11 @@ public class SolutionRunner(ILogger logger) : IRunner
         if (!TryCreateSolution(year, quest, out var solution))
         {
             return Task.CompletedTask;
+        }
+        
+        if (CheckSolutionInputSpecific(solution, out var message))
+        {
+            Log(year, quest, log: message, ConsoleColor.DarkYellow);
         }
         
         RunSolution(year, quest, solution, inputCachePath);
@@ -44,6 +50,21 @@ public class SolutionRunner(ILogger logger) : IRunner
         {
             Log(year, quest, log: $"Error running solution:\n{e}", color: ConsoleColor.Red);
         }
+    }
+    
+    private static bool CheckSolutionInputSpecific(SolutionBase instance, out string message)
+    {
+        message = string.Empty;
+        var attr = Attribute.GetCustomAttribute(
+            element: instance.GetType(),
+            attributeType: typeof(InputSpecificSolutionAttribute));
+
+        if (attr != null)
+        {
+            message = $"[Warning] {((InputSpecificSolutionAttribute)attr).Message}";
+        }
+
+        return attr != null;
     }
     
     private bool TryCreateSolution(int year, int quest,
