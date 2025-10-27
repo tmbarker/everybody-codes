@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Automation.Logger;
+using Automation.Utilities;
 using Solutions.Attributes;
 using Solutions.Common;
 
@@ -10,29 +11,29 @@ namespace Automation.Runner;
 /// <summary>
 ///     Reflective utility for running quest solutions.
 /// </summary>
-public class SolutionRunner(ILogger logger) : IRunner
+public class SolutionRunner(ILogger logger) : ISolutionRunner
 {
-    public Task Run(int year, int quest, string inputCachePath)
+    public Task Run(int series, int quest, string inputCachePath)
     {
-        if (!TryCreateSolution(year, quest, out var solution))
+        if (!TryCreateSolution(series, quest, out var solution))
         {
             return Task.CompletedTask;
         }
         
         if (CheckSolutionInputSpecific(solution, out var message))
         {
-            Log(year, quest, log: message, ConsoleColor.DarkYellow);
+            Log(series, quest, log: message, ConsoleColor.DarkYellow);
         }
         
-        RunSolution(year, quest, solution, inputCachePath);
+        RunSolution(series, quest, solution, inputCachePath);
         return Task.CompletedTask;
     }
     
-    private void RunSolution(int year, int quest, SolutionBase solution, string inputCachePath)
+    private void RunSolution(int series, int quest, SolutionBase solution, string inputCachePath)
     {
         try
         {
-            solution.InputDirectory = Path.Combine(inputCachePath, $"Y{year}", $"Q{quest:D2}");
+            solution.InputDirectory = Path.Combine(inputCachePath, FormatHelper.GetDirectoryName(series), $"Q{quest:D2}");
             
             var stopwatch = new Stopwatch();
             
@@ -43,12 +44,12 @@ public class SolutionRunner(ILogger logger) : IRunner
                 var elapsed = FormElapsedString(stopwatch.Elapsed);
                 var message = $"[Elapsed: {elapsed}] Part {i + 1} => {result}";
                 
-                Log(year, quest, log: message, color: ConsoleColor.Green);
+                Log(series, quest, log: message, color: ConsoleColor.Green);
             }
         }
         catch (Exception e)
         {
-            Log(year, quest, log: $"Error running solution:\n{e}", color: ConsoleColor.Red);
+            Log(series, quest, log: $"Error running solution:\n{e}", color: ConsoleColor.Red);
         }
     }
     
@@ -67,7 +68,7 @@ public class SolutionRunner(ILogger logger) : IRunner
         return attr != null;
     }
     
-    private bool TryCreateSolution(int year, int quest,
+    private bool TryCreateSolution(int series, int quest,
         [NotNullWhen(returnValue: true)] out SolutionBase? solution)
     {
         solution = null;
@@ -76,12 +77,12 @@ public class SolutionRunner(ILogger logger) : IRunner
         {
             var owningAssembly = typeof(SolutionBase).Assembly;
             var assemblyName = owningAssembly.GetName().Name;
-            var typeName = $"{assemblyName}.Y{year}.Q{quest:D2}.Solution";
+            var typeName = $"{assemblyName}.{FormatHelper.GetDirectoryName(series)}.Q{quest:D2}.Solution";
             var type = owningAssembly.GetType(typeName);
 
             if (type == null)
             {
-                Log(year, quest, "Unable to locate solution type", ConsoleColor.Red);
+                Log(series, quest, "Unable to locate solution type", ConsoleColor.Red);
                 return false;
             }
             
@@ -90,7 +91,7 @@ public class SolutionRunner(ILogger logger) : IRunner
         }
         catch (Exception e)
         {
-            Log(year, quest, $"Failed to activate solution instance:\n{e}", ConsoleColor.Red);
+            Log(series, quest, $"Failed to activate solution instance:\n{e}", ConsoleColor.Red);
             return false;
         }
     }
@@ -112,9 +113,10 @@ public class SolutionRunner(ILogger logger) : IRunner
         return sb.ToString();
     }
     
-    private void Log(int year, int quest, string log, ConsoleColor color)
+    private void Log(int series, int quest, string log, ConsoleColor color)
     {
-        logger.Log($"[Year: {year}, Quest: {quest}] {log}", color);
+        var eventLabel = FormatHelper.GetEventLabel(series);
+        logger.Log($"[{eventLabel}: {series}, Quest: {quest}] {log}", color);
     }
     
 }

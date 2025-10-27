@@ -1,20 +1,21 @@
 using Automation.Logger;
+using Automation.Utilities;
 
 namespace Automation.Template;
 
 public class TemplateBuilder(ILogger logger) : ITemplateBuilder
 {
-    public void Create(int year, int quest, string inputCachePath, string templateFilePath, string solutionsDirPath)
+    public void Create(int series, int quest, string inputCachePath, string templateFilePath, string solutionsDirPath)
     {
         var fullInputCachePath   = GetFullPath(inputCachePath);
         var fullTemplateFilePath = GetFullPath(templateFilePath);
         var fullSolutionsDirPath = GetFullPath(solutionsDirPath);
         
-        StubInputs(year, quest, fullInputCachePath);
-        StubSolution(year, quest, fullTemplateFilePath, fullSolutionsDirPath);
+        StubInputs(series, quest, fullInputCachePath);
+        StubSolution(series, quest, fullTemplateFilePath, fullSolutionsDirPath);
     }
 
-    private void StubInputs(int year, int quest, string inputCachePath)
+    private void StubInputs(int series, int quest, string inputCachePath)
     {
         if (string.IsNullOrWhiteSpace(inputCachePath) || !Directory.Exists(inputCachePath))
         {
@@ -23,7 +24,7 @@ public class TemplateBuilder(ILogger logger) : ITemplateBuilder
             return;
         }
         
-        var inputDirPath = Path.Combine(inputCachePath, $"Y{year}", $"Q{quest:D2}");
+        var inputDirPath = Path.Combine(inputCachePath, FormatHelper.GetDirectoryName(series), $"Q{quest:D2}");
         Directory.CreateDirectory(inputDirPath);
         
         for (var i = 0; i < 3; i++)
@@ -41,7 +42,7 @@ public class TemplateBuilder(ILogger logger) : ITemplateBuilder
         }
     }
     
-    private void StubSolution(int year, int quest, 
+    private void StubSolution(int series, int quest, 
         string templateFilePath, 
         string solutionsDirPath)
     {
@@ -59,7 +60,7 @@ public class TemplateBuilder(ILogger logger) : ITemplateBuilder
             return;
         }
         
-        var destDirPath = Path.Combine(solutionsDirPath, $"Y{year}", $"Q{quest:D2}");
+        var destDirPath = Path.Combine(solutionsDirPath, FormatHelper.GetDirectoryName(series), $"Q{quest:D2}");
         var destFilePath = Path.Combine(destDirPath, Path.GetFileName(templateFilePath));
         
         if (File.Exists(destFilePath))
@@ -74,7 +75,7 @@ public class TemplateBuilder(ILogger logger) : ITemplateBuilder
         {
             if (templateLines[i].Contains("namespace"))
             {
-                templateLines[i] = $"namespace Solutions.Y{year}.Q{quest:D2};";
+                templateLines[i] = $"namespace {FormatHelper.GetNamespaceName(series, quest)};";
                 break;
             }
         }
