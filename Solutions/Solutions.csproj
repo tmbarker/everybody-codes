@@ -11,11 +11,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="Template\Solution.cs" />
+        <ProjectReference Include="..\..\puzzle-utils\Utilities\Utilities.csproj"/>
     </ItemGroup>
-
+    
     <ItemGroup>
-      <ProjectReference Include="..\Utilities\Utilities.csproj" />
+        <None Include="Template\Solution.cs" />
     </ItemGroup>
 
 </Project>

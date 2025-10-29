@@ -42,7 +42,7 @@ public class Solution : SolutionBase
                 if (Check(target: rows[r], word, start: c, wrap: false))
                 {
                     var row = r;
-                    symbols.AddRange(collection: Enumerable
+                    symbols.AddRange(items: Enumerable
                         .Range(start: c, count: word.Length)
                         .Select(col => (row, col)));
                 }
@@ -75,7 +75,7 @@ public class Solution : SolutionBase
                 if (Check(target: horizontal, word, start: c, wrap: true))
                 {
                     var row = r;
-                    symbols.AddRange(collection: Enumerable
+                    symbols.AddRange(items: Enumerable
                         .Range(start: c, count: word.Length)
                         .Select(col => col % rows[row].Length)
                         .Select(col => (row, col)));
@@ -84,7 +84,7 @@ public class Solution : SolutionBase
                 if (Check(target: vertical, word, start: r, wrap: false))
                 {
                     var col = c;
-                    symbols.AddRange(collection: Enumerable
+                    symbols.AddRange(items: Enumerable
                         .Range(start: r, count: word.Length)
                         .Select(row => (row, col)));
                 }

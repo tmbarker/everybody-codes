@@ -1,5 +1,5 @@
 using Utilities.Extensions;
-using Utilities.Geometry;
+using Utilities.Geometry.Euclidean;
 using Utilities.Numerics;
 
 namespace Solutions.S01.Q03;

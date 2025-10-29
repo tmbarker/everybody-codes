@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Utilities.Collections;
 using Utilities.Extensions;
-using Utilities.Geometry;
+using Utilities.Geometry.Euclidean;
 
 namespace Solutions.Y2024.Q10;
 

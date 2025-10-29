@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Text;
-using Utilities.Geometry;
+using Utilities.Geometry.Euclidean;
 
 namespace Solutions.Y2024.Q19;
 
