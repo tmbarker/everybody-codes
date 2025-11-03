@@ -2,7 +2,7 @@
 
 ## Setup
 
-This solution depends on a separate `puzzle-utils` library. To use this `everybody-codes` solution:
+This solution depends on a separate `puzzle-utils` library ([GitHub](https://github.com/tmbarker/puzzle-utils)). To use this `everybody-codes` solution:
 
 1. Clone both repositories:
    ```bash
