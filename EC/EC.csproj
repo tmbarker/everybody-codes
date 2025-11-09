@@ -8,11 +8,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <!-- Ensure appsettings.json and appsettings.Development.json are copied to the output directory -->
+        <!-- Ensure appsettings.json is copied to the output directory -->
         <Content Include="appsettings.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-        <Content Include="appsettings.development.json">
+        <!-- Include appsettings.development.json only if it exists (since it's in .gitignore) -->
+        <Content Include="appsettings.development.json" Condition="Exists('appsettings.development.json')">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
