@@ -3,6 +3,7 @@ global using Solutions.Common;
 
 using JetBrains.Annotations;
 using System.Diagnostics;
+using Utilities.Geometry.Euclidean;
 
 namespace Solutions.Common;
 
@@ -52,6 +53,12 @@ public abstract class SolutionBase
     protected T[] ParseInputLines<T>(int part, Func<string, T> parser)
     {
         return GetInputLines(part).Select(parser).ToArray();
+    }
+    
+    protected Grid2D<char> GetInputGrid(int part, Origin origin = Origin.Xy)
+    {
+        var lines = GetInputLines(part);
+        return Grid2D<char>.MapChars(lines, origin);
     }
     
     private string GetInputFileName(int part)
