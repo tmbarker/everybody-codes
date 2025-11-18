@@ -24,7 +24,7 @@ public sealed class Solution : SolutionBase
         for (var i = 0; i < moves; i++)
         {
             var next = heads.SelectMany(Board.GetDragonMoves).ToHashSet();
-            heads.AddRange(next);
+            heads.UnionWith(next);
         }
         return heads.Count(Board.IsSheep);
     }

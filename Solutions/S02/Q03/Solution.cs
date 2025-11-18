@@ -82,7 +82,7 @@ public sealed class Solution : SolutionBase
                 {
                     coinPositions.Add(start);
                     next.Add(start);
-                    next.AddRange(adjacencyMemo[start]);
+                    next.UnionWith(adjacencyMemo[start]);
                 }
                 
                 starts = next;

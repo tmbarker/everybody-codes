@@ -24,7 +24,7 @@ public static class Board
             field = value;
             DragonMoveCache.Clear();
             SheepEscapePositions.Clear();
-            SheepEscapePositions.AddRange(EvaluateSheepEscapePositions());
+            SheepEscapePositions.UnionWith(EvaluateSheepEscapePositions());
         }
     }
 
