@@ -111,6 +111,6 @@ public sealed class Message
         var mapData = input[2..];
         return new Message(
             key: keyData.ToList(),
-            map: Grid2D<char>.MapChars(mapData));
+            map: mapData.ToGrid());
     }
 }

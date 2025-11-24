@@ -42,8 +42,9 @@ public static class Track
         };
         
         var plan = new List<char>();
-        var track = Grid2D<char>.MapChars(
-            strings: trackStr.Split(["\r\n", "\r", "\n"], StringSplitOptions.RemoveEmptyEntries));
+        var track = trackStr
+            .Split(["\r\n", "\r", "\n"], StringSplitOptions.RemoveEmptyEntries)
+            .ToGrid();
         
         var start = track.Find('S');
         var pose = new Pose2D(Pos: start, Face: Vec2D.Right);

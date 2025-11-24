@@ -22,7 +22,7 @@ public sealed class Solution : SolutionBase
     public override object Solve(int part)
     {
         var l = GetInputLines(part);
-        var g = Shrine.MapChars(l);
+        var g = l.ToGrid();
         var w = ExtractWords(g);
 
         return part == 1

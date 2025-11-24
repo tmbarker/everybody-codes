@@ -30,6 +30,6 @@ public sealed class Farm
     
     public static Farm Parse(string[] input)
     {
-        return new Farm(map: Grid2D<char>.MapChars(input));
+        return new Farm(map: input.ToGrid());
     }
 }

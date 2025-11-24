@@ -32,7 +32,7 @@ public class Machine
     
     public static Machine Parse(string[] lines)
     {
-        return new Machine(grid: Grid2D<char>.MapChars(lines));
+        return new Machine(grid: lines.ToGrid());
     }
     
     public int Drop(int tossSlotIndex, string tokenBehaviour)

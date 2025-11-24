@@ -1,4 +1,3 @@
-using Utilities.Extensions;
 using Utilities.Geometry.Euclidean;
 
 namespace Solutions.Y2025.Q10;

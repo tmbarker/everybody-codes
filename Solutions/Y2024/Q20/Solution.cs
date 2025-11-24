@@ -13,7 +13,7 @@ public sealed class Solution : SolutionBase
     public override object Solve(int part)
     {
         var input = GetInputLines(part);
-        var map = Map.MapChars(input);
+        var map = input.ToGrid();
         
         return part switch
         {

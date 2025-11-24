@@ -9,7 +9,7 @@ public sealed class Solution : SolutionBase
     
     public override object Solve(int part)
     {
-        var grid = Grid2D<char>.MapChars(strings: GetInputLines(part), origin: Origin.Uv);
+        var grid = GetInputGrid(part, origin: Origin.Uv);
         var start = GetStart(grid);
         var allHerbsMask = grid
             .Where(p => char.IsLetter(grid[p]))

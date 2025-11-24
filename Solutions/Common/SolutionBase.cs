@@ -58,7 +58,7 @@ public abstract class SolutionBase
     protected Grid2D<char> GetInputGrid(int part, Origin origin = Origin.Xy)
     {
         var lines = GetInputLines(part);
-        return Grid2D<char>.MapChars(lines, origin);
+        return lines.ToGrid(origin);
     }
     
     private string GetInputFileName(int part)
