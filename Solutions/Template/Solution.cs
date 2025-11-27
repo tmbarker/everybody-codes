@@ -7,7 +7,25 @@ public sealed class Solution : SolutionBase
     {
         return part switch
         {
+            1 => Part1(),
+            2 => Part2(),
+            3 => Part3(),
             _ => NotSolvedString
         };
+    }
+    
+    private object Part1()
+    {
+        return NotSolvedString;
+    }
+    
+    private object Part2()
+    {
+        return NotSolvedString;
+    }
+
+    private object Part3()
+    {
+        return NotSolvedString;
     }
 }
