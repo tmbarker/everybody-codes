@@ -1,5 +1,3 @@
-using Utilities.Extensions;
-
 namespace Solutions.S02.Q01;
 
 [QuestInfo("Nail Down Your Luck", Topics.Simulation|Topics.Graphs, Difficulty.Hard)]
@@ -7,8 +5,7 @@ public sealed class Solution : SolutionBase
 {
     public override object Solve(int part)
     {
-        var input = GetInputLines(part);
-        var chunks = input.ChunkByNonEmpty();
+        var chunks = ChunkInputByNonEmpty(part);
         var machine = Machine.Parse(chunks[0]);
         var tokens = chunks[1];
         
